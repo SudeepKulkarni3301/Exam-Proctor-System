@@ -12,8 +12,13 @@ uploads_dir = os.path.join(app.instance_path, 'uploads')
 os.makedirs(uploads_dir, exist_ok=True)
 
 @app.route("/")
+def hello_world1():
+    return render_template('login.html')
+
+@app.route("/exam")
 def hello_world():
     return render_template('index.html')
+
 
 @app.route("/detect", methods=['POST'])
 def detect():
@@ -33,7 +38,7 @@ def opencam():
     print("Camera starting")
     threads = []
     # Define the number of webcams to open
-    num_webcams = 3
+    num_webcams = 1
     # Launch a separate thread for each webcam
     for i in range(num_webcams):
         t = threading.Thread(target=run_detection, args=(i,))
